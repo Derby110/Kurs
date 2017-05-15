@@ -1,0 +1,32 @@
+%h1 Список стиллажей
+
+%table
+  %thead
+    %tr
+      %th Зал
+      %th
+      %th Краткое название зала
+      %th
+      %th Полное название зала
+      %th
+      %th
+      %th
+
+  %tbody
+    - @stilages.each do |stilage|
+      %tr
+        %td= stilage.room
+        %td
+        %td= stilage.room.schort_name
+        %td
+        %td= stilage.room.long_name
+        %td
+        %td= link_to 'Показать', stilage
+        %td
+        %td= link_to 'Редактировать', edit_stilage_path(stilage)
+        %td
+        %td= link_to 'Удалить', stilage, method: :delete, data: { confirm: 'Вы уверены?' }
+
+%br
+
+= link_to 'Новый стиллаж', new_stilage_path

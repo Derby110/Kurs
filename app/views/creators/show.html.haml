@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Last name:
+  = @creator.last_name
+%p
+  %b First name:
+  = @creator.first_name
+%p
+  %b Second name:
+  = @creator.second_name
+
+= link_to 'Редактировать', edit_creator_path(@creator)
+\|
+= link_to 'Назад', creators_path

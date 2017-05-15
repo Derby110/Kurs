@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Зал:
+  = @stilage.room.long_name
+
+= link_to 'Редактировать', edit_stilage_path(@stilage)
+\|
+= link_to 'Назад', stilages_path

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Book:
+  = @book_creator.book
+%p
+  %b Creator:
+  = @book_creator.creator
+
+= link_to 'Edit', edit_book_creator_path(@book_creator)
+\|
+= link_to 'Back', book_creators_path

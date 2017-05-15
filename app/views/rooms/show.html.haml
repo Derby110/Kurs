@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Schort name:
+  = @room.schort_name
+%p
+  %b Long name:
+  = @room.long_name
+
+= link_to 'Редактировать', edit_room_path(@room)
+\|
+= link_to 'Назад', rooms_path

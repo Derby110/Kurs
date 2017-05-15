@@ -1,0 +1,23 @@
+%h1 Список залов
+
+%table
+  %thead
+    %tr
+      %th Краткое название
+      %th Полное название
+      %th
+      %th
+      %th
+
+  %tbody
+    - @rooms.each do |room|
+      %tr
+        %td= room.schort_name
+        %td= room.long_name
+        %td= link_to 'Показать', room
+        %td= link_to 'Редактировать', edit_room_path(room)
+        %td= link_to 'Удалить', room, method: :delete, data: { confirm: 'Вы уверены?' }
+
+%br
+
+= link_to 'Новый зал', new_room_path

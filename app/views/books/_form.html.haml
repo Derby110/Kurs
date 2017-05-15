@@ -1,0 +1,52 @@
+= form_for @book do |f|
+  = error_messages_for @book
+  .row
+    .col-md-6
+      .form-group
+        = f.label :book_name
+        = f.text_field :book_name, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :part
+        = f.number_field :part, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :isbn_index
+        = f.text_field :isbn_index, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :publick_year
+        = f.number_field :publick_year, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :number_of_have
+        = f.number_field :number_of_have, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :schelf_number
+        = f.number_field :schelf_number, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :stilage_id
+        = f.text_field :stilage_id, class: 'form-control'
+  - i = 0
+  =f.fields_for :book_creators do |fr|
+    = fr.hidden_field :id
+    .col-md-6
+      .panel.panel-success
+        .panel-heading
+          Автор
+          = i + 1
+        .panel-body
+          .row
+            .form-group
+              = fr.label :creator_id
+              = fr.select(:creator_id, 
+            options_for_select(creator_options, fr.object.creator_id), 
+            {}, class: 'form-control')
+          .row
+            .form-group
+              = fr.hidden_field :book_id, class: 'form-control'
+              = fr.error_messages_for :book_id    
+  .actions
+    = f.submit 'Сохранить'

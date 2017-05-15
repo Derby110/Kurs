@@ -1,0 +1,33 @@
+%h1 Список книг
+
+%table
+  %thead
+    %tr
+      %th Название книги
+      %th Часть/Том
+      %th Индекс ISBN
+      %th Год публикации
+      %th Количество в наличии
+      %th Номер полки
+      %th Стиллаж
+      %th
+      %th
+      %th
+
+  %tbody
+    - @books.each do |book|
+      %tr
+        %td= book.book_name
+        %td= book.part
+        %td= book.isbn_index
+        %td= book.publick_year
+        %td= book.number_of_have
+        %td= book.schelf_number
+        %td= book.stilage
+        %td= link_to 'Показать', book
+        %td= link_to 'Редактировать', edit_book_path(book)
+        %td= link_to 'Удалить', book, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'Новая книга', new_book_path

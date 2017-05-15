@@ -1,0 +1,25 @@
+%h1 Список Авторов
+
+%table
+  %thead
+    %tr
+      %th Фамилия
+      %th Имя
+      %th Отчество
+      %th
+      %th
+      %th
+
+  %tbody
+    - @creators.each do |creator|
+      %tr
+        %td= creator.last_name
+        %td= creator.first_name
+        %td= creator.second_name
+        %td= link_to 'Показать', creator
+        %td= link_to 'Редактировать', edit_creator_path(creator)
+        %td= link_to 'Удалить', creator, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Creator', new_creator_path

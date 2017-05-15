@@ -1,0 +1,15 @@
+= form_for @stilage do |f|
+  = error_messages_for @stilage
+  .row
+    =f.fields_for :room do |fm|
+      .row
+        .col-md-4
+          .form-group
+            = fm.label :schort_name, "Краткое название"
+            = fm.text_field :schort_name, class: 'form-control'
+        .col-md-4
+          .form-group
+            = fm.label :long_name, "Полное название"
+            = fm.text_field :long_name, class: 'form-control'
+    .actions
+      = f.submit 'Сохранить'

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  book_name: MyText
+  part: 1
+  isbn_index: MyString
+  publick_year: 1
+  number_of_have: 1
+  schelf_number: 1
+  stilage_id: 
+
+two:
+  book_name: MyText
+  part: 1
+  isbn_index: MyString
+  publick_year: 1
+  number_of_have: 1
+  schelf_number: 1
+  stilage_id: 
