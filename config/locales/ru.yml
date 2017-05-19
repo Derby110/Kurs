@@ -38,6 +38,10 @@ ru:
   activerecord:
     models:
       user: Пользователь
+      room: Зал
+      book: Книга
+      stilage: Стиллаж
+      creator: Автор
     attributes:
       user:
         email: Пользовательское имя/электронная почта
@@ -54,7 +58,7 @@ ru:
         info: Краткое название
         full_info: Описание
       room:
-        short_name: Краткое название зала
+        sсhort_name: Краткое название зала
         long_name: Полное название зала
       stilage:
         room: Зал
@@ -82,4 +86,11 @@ ru:
       user/role_users:
         <<: *role_users
       # nested_finish
+      book_creator: &book_creators
+        book: Книга
+        book_id: Книга
+        creator: Автор
+        creator_id: Автор
+      book/book_creator:
+        <<: *book_creators
           

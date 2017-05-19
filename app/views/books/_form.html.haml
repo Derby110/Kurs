@@ -30,7 +30,7 @@
         = f.label :stilage_id
         = f.text_field :stilage_id, class: 'form-control'
   - i = 0
-  =f.fields_for :creators do |fr|
+  =f.fields_for :creator do |fr|
     = fr.hidden_field :id
     .col-md-6
       .panel.panel-success
