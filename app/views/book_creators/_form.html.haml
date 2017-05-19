@@ -8,9 +8,23 @@
 
   .field
     = f.label :book_id
-    = f.text_field :book_id
-  .field
-    = f.label :creator_id
-    = f.text_field :creator_id
+    = f.text_field :book_id, class: 'form-control'
+  =f.fields_for :creator do |fr|
+    = fr.hidden_field :id
+    .row
+      .col-md-6
+        .form-group
+          = fr.label :Фамилия
+          = fr.text_field:last_name, class: 'form-control'
+    .row
+      .col-md-6
+        .form-group
+          = fr.label :Имя
+          = fr.text_field:first_name, class: 'form-control'
+    .row
+      .col-md-6
+        .form-group
+          = fr.label :Отчество
+          = fr.text_field:second_name, class: 'form-control'
   .actions
     = f.submit 'Save'

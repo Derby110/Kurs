@@ -15,8 +15,7 @@ class BooksController < ApplicationController
   # GET /books/new
   def new
     @book = Book.new
-    @book.book_creators.creator = Creator.new
-    @book_creator = @book.book_creators.build(book_id: @book, creator_id: @creator)
+    #@book_creator = @book.book_creators.build(book_id: @book, last_name: :last_name, first_name: :first_name, second_name: :second_name)
   end
 
   # GET /books/1/edit
@@ -32,7 +31,7 @@ class BooksController < ApplicationController
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
         format.json { render :show, status: :created, location: @book }
-        @book_creator = @book.book_creators.create!(book_id: @book, creator_id: @creator)
+        #@book_creator = @book.book_creators.create!(book_id: @book, last_name: :last_name, first_name: :first_name, second_name: :second_name)
       else
         format.html { render :new }
         format.json { render json: @book.errors, status: :unprocessable_entity }
