@@ -1,0 +1,21 @@
+.col-md-6
+  .panel.panel-success
+    .panel-heading
+      Автор
+      = i 
+  .panel-body
+    .row
+      .col-md-6
+        .form-group
+          = fm.label :Фамилия
+          = fm.text_field:last_name, class: 'form-control'
+    .row
+      .col-md-6
+        .form-group
+          = fm.label :Имя
+          = fm.text_field:first_name, class: 'form-control'
+    .row
+      .col-md-6
+        .form-group
+          = fm.label :Отчество
+          = fm.text_field:second_name, class: 'form-control'

@@ -15,6 +15,7 @@ class BooksController < ApplicationController
   # GET /books/new
   def new
     @book = Book.new
+    @book.book_creators.build(book_id: params[:id]).build_creator
   end
 
   # GET /books/1/edit
@@ -28,9 +29,6 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-
-        @book_creator = @book.book_creators.create!(book_id: @book, creator_id: book_params[:creator_id] )
-        
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
         format.json { render :show, status: :created, location: @book }
       else
@@ -73,7 +71,8 @@ class BooksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
       params.require(:book).permit(:book_name, :part, :isbn_index, :publick_year, :number_of_have, :schelf_number, :stilage_id, 
-      {book_creators_attributes: [:id, :_destroy, :creator_id, :book_id, creator_attributes: [:id, :_destroy, :last_name, :first_name, :second_name]]}
+      {book_creators_attributes: [:id, :_destroy, :creator_id, :book_id, 
+      creator_attributes: [:id, :_destroy, :last_name, :first_name, :second_name]]}
       )
     end
 end

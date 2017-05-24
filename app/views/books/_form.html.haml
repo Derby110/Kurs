@@ -1,5 +1,7 @@
 = form_for @book do |f|
   = error_messages_for @book
+  .form-actions.bottom20
+    = f.submit nil, class: 'btn btn-primary'
   .row
     .col-md-6
       .form-group
@@ -30,30 +32,10 @@
         = f.label :stilage_id
         = f.text_field :stilage_id, class: 'form-control'
   - i = 0
-  =f.fields_for :book_creator do |fr|
+  =f.fields_for :book_creators do |fr|
     = fr.hidden_field :id
     = fr.fields_for :creator do |fm|
-      = fm.hidden_field :id
-      .col-md-6
-        .panel.panel-success
-          .panel-heading
-            Автор
-            = i + 1
-          .panel-body
-            .row
-              .col-md-6
-                .form-group
-                  = fm.label :Фамилия
-                  = fm.text_field:last_name, class: 'form-control'
-            .row
-              .col-md-6
-                .form-group
-                  = fm.label :Имя
-                  = fm.text_field:first_name, class: 'form-control'
-            .row
-              .col-md-6
-                .form-group
-                  = fm.label :Отчество
-                  = fm.text_field:second_name, class: 'form-control'            
-  .actions
-    = f.submit 'Сохранить'
+      = fr.hidden_field :id
+      = render('books/one_book_creator_form', fm: fm, i: i + 1)
+              
+

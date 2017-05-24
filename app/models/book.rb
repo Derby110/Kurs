@@ -1,6 +1,7 @@
 class Book < ActiveRecord::Base
   belongs_to :stilage
   has_many :book_creators, dependent: :destroy, inverse_of: :book
+  has_many :creators, dependent: :destroy, through: :book_creators
   
   validates :book_name, presence: true, uniqueness: true
   validates :isbn_index, presence: true, uniqueness: true
