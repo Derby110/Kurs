@@ -30,12 +30,15 @@
     .col-md-6
       .form-group
         = f.label :stilage_id
-        = f.text_field :stilage_id, class: 'form-control'
-  - i = 0
-  =f.fields_for :book_creators do |fr|
-    = fr.hidden_field :id
-    = fr.fields_for :creator do |fm|
+        = f.select(:stilage_id, options_for_select(stilage_options, f.object.stilage_id), {}, class: 'form-control')
+        = f.error_messages_for(:stilage_id)
+  - if @current_role_user.present? and @current_role_user.is_admin?
+    .row.bottom20
+      .col-md-12
+        = link_to_add_creator(f, f.object)
+    - i = 0
+    =f.fields_for :book_creators do |fr|
       = fr.hidden_field :id
-      = render('books/one_book_creator_form', fm: fm, i: i + 1)
+      = render('books/one_book_creator_form', fr: fr, i: i + 1)
               
 

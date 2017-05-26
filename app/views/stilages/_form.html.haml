@@ -1,5 +1,7 @@
 = form_for @stilage do |f|
   = error_messages_for @stilage
+  .form-actions.bottom20
+    = f.submit nil, class: 'btn btn-primary'
   .row
     =f.fields_for :room do |fm|
       .row
@@ -11,5 +13,3 @@
           .form-group
             = fm.label :long_name, "Полное название"
             = fm.text_field :long_name, class: 'form-control'
-    .actions
-      = f.submit 'Сохранить'

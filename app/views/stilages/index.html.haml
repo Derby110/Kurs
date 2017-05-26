@@ -1,32 +1,47 @@
+=breadcrumb_tag do
+  %li.active
+    = link_to t('app.stilages'), stilages_path
+  %li
+    Администрирование
+
 %h1 Список стиллажей
 
-%table
-  %thead
-    %tr
-      %th Зал
-      %th
-      %th Краткое название зала
-      %th
-      %th Полное название зала
-      %th
-      %th
-      %th
+.container
+  .row
+    .col-md-1
+      %table.table.table-hover.table-bordered
+        %caption
+          = link_to new_stilage_path, class: 'btn btn-success' do
+            = fa_icon :plus
+            = t('buttons.new.stilage')
+        %thead
+          %tr
+            %th Зал
+            %th Краткое название зала
+            %th Полное название зала
+            %th
+            %th
+            %th
 
-  %tbody
-    - @stilages.each do |stilage|
-      %tr
-        %td= stilage.room
-        %td
-        %td= stilage.room.schort_name
-        %td
-        %td= stilage.room.long_name
-        %td
-        %td= link_to 'Показать', stilage
-        %td
-        %td= link_to 'Редактировать', edit_stilage_path(stilage)
-        %td
-        %td= link_to 'Удалить', stilage, method: :delete, data: { confirm: 'Вы уверены?' }
 
-%br
 
-= link_to 'Новый стиллаж', new_stilage_path
+        %tbody
+          - @stilages.each do |stilage|
+            %tr
+              %td= stilage.room
+              %td= stilage.room.schort_name
+              %td= stilage.room.long_name
+              %td
+                =link_to edit_stilage_path(stilage), class: 'btn btn-primary' do
+                  = fa_icon :edit
+                  = t('buttons.edit')
+              %td
+                = link_to stilage, class: 'btn btn-info' do
+                  = fa_icon "eye"
+                  = t('buttons.show')
+              %td
+                = link_to stilage, :method => :delete, :data => { confirm: 'Вы уверены?' }, class: 'btn btn-danger' do
+                  = fa_icon :times
+                  = t('buttons.destroy')
+
+

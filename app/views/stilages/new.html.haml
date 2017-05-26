@@ -1,5 +1,10 @@
+=breadcrumb_tag do
+  %li.active
+    = link_to t('app.stilages'), stilages_path
+  %li
+    = t('headers.stilages.new')
+
 %h1 Новый стиллаж
 
 = render 'form'
 
-= link_to 'Назад', stilages_path

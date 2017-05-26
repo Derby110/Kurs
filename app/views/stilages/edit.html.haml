@@ -1,7 +1,18 @@
+=breadcrumb_tag do
+  %li.active
+    = link_to t('app.stilages'), stilages_path
+  %li
+    = t('headers.stilages.edit')
+  %li
+    = link_to(@stilage.id)
+    
 %h1 Редактирование стиллажей
 
 = render 'form'
 
-= link_to 'Показать', @stilage
-\|
-= link_to 'Назад', stilages_path
+%br
+  .row
+    = link_to @stilage, class: 'btn btn-info' do
+      = fa_icon "eye"
+      = t('buttons.show')
+

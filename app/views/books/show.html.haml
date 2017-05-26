@@ -1,27 +1,55 @@
-%p#notice= notice
+=breadcrumb_tag do
+  %li.active
+    = link_to t('app.books'), books_path
+  %li
+    = @book.id
 
-%p
-  %b Book name:
-  = @book.book_name
-%p
-  %b Part:
-  = @book.part
-%p
-  %b Isbn index:
-  = @book.isbn_index
-%p
-  %b Publick year:
-  = @book.publick_year
-%p
-  %b Number of have:
-  = @book.number_of_have
-%p
-  %b Schelf number:
-  = @book.schelf_number
-%p
-  %b Stilage:
-  = @book.stilage
+.container
+  .row
+    .col-md-10
+      .panel.panel-default
+        .panel-heading
+        .panel-body
+          = link_to  edit_book_path(@book), class: 'btn btn-primary' do
+            = fa_icon :edit
+            = t('buttons.edit')
+          = link_to  books_path, class: 'btn btn-warning' do
+            = fa_icon :backward
+            = t('buttons.back')
+        .list-group
+          %p.list-group-item
+            %b
+              = t('activerecord.attributes.book.book_name')
+            %span.badge
+              = @book.book_name
+          %p.list-group-item
+            %b
+              = t('activerecord.attributes.part')
+            %span.badge
+              = @book.part
+          %p.list-group-item
+            %b
+              = t('activerecord.attributes.isbn_index')
+            %span.badge
+              = @book.isbn_index
+          %p.list-group-item
+            %b
+              = t('activerecord.attributes.publick_year')
+            %span.badge
+              = @book.publick_year
+          %p.list-group-item
+            %b
+              = t('activerecord.attributes= @book.stilage')
+            %span.badge
+              = @book.stilage
+          %p.list-group-item
+            %b
+              = t('activerecord.attributes.schelf_number')
+            %span.badge
+              = @book.schelf_number
+          %p.list-group-item
+            %b
+              = t('activerecord.attributes.stilage')
+            %span.badge
+              = @book.stilage
 
-= link_to 'Редактировать', edit_book_path(@book)
-\|
-= link_to 'Назад', books_path

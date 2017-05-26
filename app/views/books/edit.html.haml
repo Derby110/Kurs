@@ -1,7 +1,16 @@
+=breadcrumb_tag do
+  %li.active
+    = link_to t('app.books'), books_path
+  %li
+    = t('headers.books.edit')
+  %li
+    = link_to(@book.id)
+
 %h1 Редактировать сведенья о книге.
 
 = render 'form'
-
-= link_to 'Показать', @book
-\|
-= link_to 'Назад', books_path
+%br
+  .row
+    = link_to @book, class: 'btn btn-info' do
+      = fa_icon "eye"
+      = t('buttons.show')

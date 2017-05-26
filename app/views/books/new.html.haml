@@ -1,5 +1,10 @@
+=breadcrumb_tag do
+  %li.active
+    = link_to t('app.books'), books_path
+  %li
+    = t('headers.books.new')
+
 %h1 Новая книга
 
 = render 'form'
 
-= link_to 'Назад', books_path

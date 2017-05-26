@@ -1,9 +1,32 @@
-%p#notice= notice
+=breadcrumb_tag do
+  %li.active
+    = link_to t('app.stilages'), stilages_path
+  %li
+    = @stilage.id
+    
+.container
+  .row
+    .col-md-10
+      .panel.panel-default
+        .panel-heading
+        .panel-body
+          = link_to  edit_stilage_path(@stilage), class: 'btn btn-primary' do
+            = fa_icon :edit
+            = t('buttons.edit')
+          = link_to  stilages_path, class: 'btn btn-warning' do
+            = fa_icon :backward
+            = t('buttons.back')
+        .list-group
+          %p.list-group-item
+            %b
+              = t('activerecord.attributes.stilage.room.long_name ')
+            %span.badge
+              = @stilage.room.long_name 
+        .list-group
+          %p.list-group-item
+            %b
+              = t('activerecord.attributes.stilage.room.schort_name ')
+            %span.badge
+              = @stilage.room.schort_name 
 
-%p
-  %b Зал:
-  = @stilage.room.long_name
 
-= link_to 'Редактировать', edit_stilage_path(@stilage)
-\|
-= link_to 'Назад', stilages_path
