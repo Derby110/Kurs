@@ -23,6 +23,15 @@
           = link_to(url_for(controller: item[:controller], action: item[:action]), class: item[:class]) do
             = fa_icon(item[:icon], class: 'menu-icon')
             = item[:name]
+  
+    %li
+      = link_to books_path, class: 'subitem' do
+        = fa_icon "file-text"
+        = t('app.book')
+    %li
+      = link_to stilages_path, class: 'subitem' do
+        = fa_icon "asterisk"
+        = t('app.stilage')
     %li.footer
       %div
         © В.Ю. Радыгин

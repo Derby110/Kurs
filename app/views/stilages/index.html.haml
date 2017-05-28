@@ -16,9 +16,9 @@
             = t('buttons.new.stilage')
         %thead
           %tr
-            %th Зал
             %th Краткое название зала
             %th Полное название зала
+            %th Номер стеллажа
             %th
             %th
             %th
@@ -28,9 +28,9 @@
         %tbody
           - @stilages.each do |stilage|
             %tr
-              %td= stilage.room
               %td= stilage.room.schort_name
               %td= stilage.room.long_name
+              %td= stilage.id
               %td
                 =link_to edit_stilage_path(stilage), class: 'btn btn-primary' do
                   = fa_icon :edit

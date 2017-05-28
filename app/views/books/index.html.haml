@@ -17,7 +17,7 @@
             %th Год публикации
             %th Количество в наличии
             %th Номер полки
-            %th Стиллаж
+            %th Стеллаж
             %th
             %th
             %th
@@ -31,7 +31,7 @@
               %td= book.publick_year
               %td= book.number_of_have
               %td= book.schelf_number
-              %td= book.stilage
+              %td= book.stilage.id
               %td 
                 =link_to edit_book_path(book), class: 'btn btn-primary' do
                   = fa_icon :edit

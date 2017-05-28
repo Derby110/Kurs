@@ -16,6 +16,7 @@ class StilagesController < ApplicationController
   def new
     @stilage = Stilage.new
     @stilage.room = Room.new
+    #Room.find_or_initialize_by!(stilage_params[:long_name])
   end
 
   # GET /stilages/1/edit
@@ -26,7 +27,6 @@ class StilagesController < ApplicationController
   # POST /stilages.json
   def create
     @stilage = Stilage.new(stilage_params)
-
     respond_to do |format|
       if @stilage.save
         format.html { redirect_to @stilage, notice: 'Stilage was successfully created.' }

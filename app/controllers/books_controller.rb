@@ -6,6 +6,15 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
   end
+  
+  def search
+    if params.has_key?('search')
+      @books = Book.search(params['search'])
+    else
+      @books = []
+    end
+    params['search'] ||= {}
+  end
 
   # GET /books/1
   # GET /books/1.json

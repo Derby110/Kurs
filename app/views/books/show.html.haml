@@ -24,32 +24,27 @@
               = @book.book_name
           %p.list-group-item
             %b
-              = t('activerecord.attributes.part')
+              = t('activerecord.attributes.book.part')
             %span.badge
               = @book.part
           %p.list-group-item
             %b
-              = t('activerecord.attributes.isbn_index')
+              = t('activerecord.attributes.book.isbn_index')
             %span.badge
               = @book.isbn_index
           %p.list-group-item
             %b
-              = t('activerecord.attributes.publick_year')
+              = t('activerecord.attributes.book.publick_year')
             %span.badge
               = @book.publick_year
           %p.list-group-item
             %b
-              = t('activerecord.attributes= @book.stilage')
-            %span.badge
-              = @book.stilage
-          %p.list-group-item
-            %b
-              = t('activerecord.attributes.schelf_number')
+              = t('activerecord.attributes.book.schelf_number')
             %span.badge
               = @book.schelf_number
           %p.list-group-item
             %b
-              = t('activerecord.attributes.stilage')
+              = t('activerecord.attributes.book.stilage')
             %span.badge
-              = @book.stilage
+              = @book.stilage.id
 

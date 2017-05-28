@@ -1,0 +1,94 @@
+=breadcrumb_tag do
+  %li.active
+    = link_to t('app.books'), books_path
+  %li
+    = t('headers.book.search')
+
+
+.page-header
+  %h1= t('headers.book.search')
+
+
+.container
+  = form_tag(search_books_path(), :method => "get") do
+    .row
+      .col-md-5
+        .form-group
+          = label_tag 'search', t('activerecord.attributes.book.book_name')
+          = text_field_tag 'search[book_name]', params['search']['book_name'], placeholder: "Введите название книги", class: 'form-control'
+      .col-md-5
+        .form-group
+          = label_tag 'search', t('activerecord.attributes.book.isbn_index')
+          = text_field_tag 'search[isbn_index]', params['search']['isbn_index'], placeholder: "Укажите индекс ISBN", class: 'form-control'
+    .row
+      .col-md-5
+        .form-group
+          = label_tag 'search', t('activerecord.attributes.book.part')
+          = text_field_tag 'search[part]', params['search']['part'], placeholder: "Укажите том.часть книги", class: 'form-control'
+      .col-md-5
+        .form-group
+          = label_tag 'search', t('activerecord.attributes.book.publick_year')
+          = text_field_tag 'search[publick_year]', params['search']['publick_year'], placeholder: "Введите год публикации", class: 'form-control'
+    .row
+      .col-md-5
+        .form-group
+          = label_tag 'search', t('activerecord.attributes.book.schelf_number')
+          = text_field_tag 'search[publick_year]', params['search']['publick_year'], placeholder: "Укажите номер полки", class: 'form-control'
+    .row
+      .col-md-5
+        .form-group
+          = label_tag 'search', t('activerecord.attributes.book.number_of_have')
+          = text_field_tag 'search[number_of_have]', params['search']['number_of_have'], placeholder: "Укажите сколько экземпляров в наличии", class: 'form-control'
+    -#.row
+    -#  .col-md-5
+    -#    .form-group
+    -#      = label_tag 'search', t('activerecord.attributes.book.creator.last_name')
+    -#      = text_field_tag 'search[last_name]', params['search']['last_name'], placeholder: "Укажите фамилию автора", class: 'form-control'
+    -#.row
+    -#  .col-md-5
+    -#    .form-group
+    -#      = label_tag 'search', t('activerecord.attributes.book.creator.first_name')
+    -#      = text_field_tag 'search[first_name]', params['search']['first_name'], placeholder: "Укажите имя автора", class: 'form-control'
+    -#.row
+    -#  .col-md-5
+    -#    .form-group
+    -#      = label_tag 'search', t('activerecord.attributes.book.creator.second_name')
+    -#      = text_field_tag 'search[second_name]', params['search']['second_name'], placeholder: "Укажите отчество автора", class: 'form-control' 
+    = submit_tag(:search_button, value: 'Поиск', class: 'btn btn-default')
+    = link_to  books_path, class: 'btn btn-warning' do
+      = fa_icon :backward
+      = t('buttons.back')
+    = link_to root_path, class: "btn btn-primary" do
+      = fa_icon "home"
+      = t('buttons.home')
+
+.row
+  .col-md-12
+    - @books.each_with_index do |book, index|
+      .col-md-4
+        .form-group
+          %h3
+            Книга
+            = index + 1
+            = link_to book, class: 'btn btn-info' do
+              = fa_icon "eye"
+              = t('buttons.show')
+          %dl
+            %dt= Book.human_attribute_name(:book_name)
+            %dd= book.book_name
+            %dt= Book.human_attribute_name(:isbn_index)
+            %dd= book.isbn_index
+            %dt= Book.human_attribute_name(:part)
+            %dd= book.part
+            %dt= Book.human_attribute_name(:publick_year)
+            %dd= book.publick_year
+            %dt= Book.human_attribute_name(:number_of_have)
+            %dd= book.number_of_have
+            %dt= Book.human_attribute_name(:schelf_number)
+            %dd= book.schelf_number
+            -#%dt= Creator.human_attribute_name(:last_name)
+            -#%dd= book.creators.last_name
+            -#%dt= Creator.human_attribute_name(:first_name)
+            -#%dd= book.creator.first_name
+            -#%dt= Creator.human_attribute_name(:second_name)
+            -#%dd= book.creator.second_name

@@ -1,6 +1,9 @@
 ru:
   app:
-    name: Базовое приложение
+    book: Книги
+    stilage: Стеллажи
+    search: Поиск книг
+    name: База данных библиотеки
     company:
       short_name: МПУ
       department: Кафедра
@@ -13,12 +16,25 @@ ru:
     edit: Редактировать
     destroy: Удалить
     show: Показать
+    back: Назад
+    home: На главную
+    search: Поиск книг
     confirm:
       user: Действительно удалить пользователя?
       role: Действительно удалить роль?
+      book: Действительно удалить книгу?
+      creator: Действительно удалить автора?
+      book_creator: Действительно удалить связь?
+      stilage: Действительно удалить стеллаж?
+      room: Действительно удалить зал?
     new: 
       user: Новый пользователь
       role: Новая роль
+      book: Новая книга
+      creator: Новый автор
+      book_creator: Новая связь
+      stilage: Новый стеллаж
+      room: Новый зал
   headers:
     users:
       edit: Редактирование пользователя
@@ -28,6 +44,28 @@ ru:
       index: Список возможных ролей пользователей
       edit: Редактирование роли
       new: Новая роль
+    books:
+      edit: Редактирование книги
+      new: Новая книга
+      index: Список книг
+      search: Поиск по книгам
+      panel: Книги
+    creators:
+      edit: Редактирование автора
+      new: Новый автор
+      index: Список авторов
+    book_creators:
+      edit: Редактирование связи
+      new: Новая связь
+      index: Список связей
+    stillages:
+      edit: Редактирование стеллажа
+      new: Новый стеллаж
+      index: Список стеллажей
+    rooms:
+      edit: Редактирование зала
+      new: Новый зал
+      index: Список залов
   views:
     pagination:
       first: ⇤
@@ -40,7 +78,7 @@ ru:
       user: Пользователь
       room: Зал
       book: Книга
-      stilage: Стиллаж
+      stilage: Стеллаж
       creator: Автор
     attributes:
       user:
@@ -57,21 +95,24 @@ ru:
         name: Обозначение
         info: Краткое название
         full_info: Описание
-      room:
+      room: &room
         sсhort_name: Краткое название зала
         long_name: Полное название зала
       stilage:
         room: Зал
         room_id: Зал
+      stilage/room:
+        <<: *room
       book:
+         search: Книга
          book_name: Название книги	
          isbn_index: Индекс ISBN
          part: Часть/Том
          publick_year: Год публикации
          number_of_have: Есть в наличии(шт.)
          schelf_number: Номер полки
-         stilage: Стиллаж
-         stilage_id: Стиллаж
+         stilage: Стеллаж
+         stilage_id: Стеллаж
       creator:
          last_name: Фамилия
          first_name: Имя

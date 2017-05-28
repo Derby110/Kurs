@@ -1,6 +1,7 @@
 module BookCreatorsHelper 
   def link_to_add_creator(form, book)
     new_object = BookCreator.new()
+    creator = new_object.build_creator
     fields = form.fields_for(:book_creators, new_object, 
       :child_index => 'new_creator') do |fr|
       render('books/one_book_creator_form', fr: fr, i: 'Новый')

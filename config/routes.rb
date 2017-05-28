@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :book_creators
   resources :creators
-  resources :books
+  resources :books do
+    collection do
+      get :search
+    end
+  end
   resources :stilages
   resources :rooms
   resources :role_users
@@ -75,3 +79,5 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 end
+
+
