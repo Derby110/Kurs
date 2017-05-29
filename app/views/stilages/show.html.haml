@@ -1,6 +1,6 @@
 =breadcrumb_tag do
   %li.active
-    = link_to t('app.stilages'), stilages_path
+    = link_to t('app.stilage'), stilages_path
   %li
     = @stilage.id
     
@@ -19,13 +19,13 @@
         .list-group
           %p.list-group-item
             %b
-              = t('activerecord.attributes.stilage.room.long_name ')
+              = t('activerecord.attributes.stilage.room.long_name')
             %span.badge
               = @stilage.room.long_name 
         .list-group
           %p.list-group-item
             %b
-              = t('activerecord.attributes.stilage.room.schort_name ')
+              = t('activerecord.attributes.stilage.room.sсhort_name')
             %span.badge
               = @stilage.room.schort_name 
 

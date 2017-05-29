@@ -2,11 +2,11 @@
   %li.active
     = link_to t('app.books'), books_path
   %li
-    = t('headers.book.search')
+    = t('headers.books.search')
 
 
 .page-header
-  %h1= t('headers.book.search')
+  %h1= t('headers.books.search')
 
 
 .container
@@ -33,27 +33,27 @@
       .col-md-5
         .form-group
           = label_tag 'search', t('activerecord.attributes.book.schelf_number')
-          = text_field_tag 'search[publick_year]', params['search']['publick_year'], placeholder: "Укажите номер полки", class: 'form-control'
+          = text_field_tag 'search[schelf_number]', params['search']['schelf_number'], placeholder: "Укажите номер полки", class: 'form-control'
     .row
       .col-md-5
         .form-group
           = label_tag 'search', t('activerecord.attributes.book.number_of_have')
           = text_field_tag 'search[number_of_have]', params['search']['number_of_have'], placeholder: "Укажите сколько экземпляров в наличии", class: 'form-control'
-    -#.row
-    -#  .col-md-5
-    -#    .form-group
-    -#      = label_tag 'search', t('activerecord.attributes.book.creator.last_name')
-    -#      = text_field_tag 'search[last_name]', params['search']['last_name'], placeholder: "Укажите фамилию автора", class: 'form-control'
-    -#.row
-    -#  .col-md-5
-    -#    .form-group
-    -#      = label_tag 'search', t('activerecord.attributes.book.creator.first_name')
-    -#      = text_field_tag 'search[first_name]', params['search']['first_name'], placeholder: "Укажите имя автора", class: 'form-control'
-    -#.row
-    -#  .col-md-5
-    -#    .form-group
-    -#      = label_tag 'search', t('activerecord.attributes.book.creator.second_name')
-    -#      = text_field_tag 'search[second_name]', params['search']['second_name'], placeholder: "Укажите отчество автора", class: 'form-control' 
+    .row
+      .col-md-5
+        .form-group
+          = label_tag Creator.human_attribute_name('last_name')
+          = text_field_tag 'search[creator][last_name]', nil, placeholder: "Укажите фамилию автора", class: 'form-control'
+    .row
+      .col-md-5
+        .form-group
+          = label_tag Creator.human_attribute_name('first_name')
+          = text_field_tag 'search[creator][first_name]', nil, placeholder: "Укажите имя автора", class: 'form-control'
+    .row
+      .col-md-5
+        .form-group
+          = label_tag Creator.human_attribute_name('second_name')
+          = text_field_tag 'search[creator][second_name]', nil, placeholder: "Укажите отчество автора", class: 'form-control'
     = submit_tag(:search_button, value: 'Поиск', class: 'btn btn-default')
     = link_to  books_path, class: 'btn btn-warning' do
       = fa_icon :backward
@@ -86,9 +86,15 @@
             %dd= book.number_of_have
             %dt= Book.human_attribute_name(:schelf_number)
             %dd= book.schelf_number
-            -#%dt= Creator.human_attribute_name(:last_name)
-            -#%dd= book.creators.last_name
-            -#%dt= Creator.human_attribute_name(:first_name)
-            -#%dd= book.creator.first_name
-            -#%dt= Creator.human_attribute_name(:second_name)
-            -#%dd= book.creator.second_name
+            %dt= Book.human_attribute_name(:book_creators)
+            %dd= book.book_creators.map{ |cr| cr.creator.last_name }.uniq.join(', ')
+            
+            
+            - if @current_role_user.present? and @current_role_user.is_admin?
+              = link_to edit_book_path(book), class: 'btn btn-info' do
+                = fa_icon :edit
+                = t('buttons.edit')
+              = link_to book, :method => :delete, :data => { :confirm => t('buttons.confirm.book') },
+              class: 'btn btn-danger' do
+                = fa_icon :times
+                = t('buttons.destroy')

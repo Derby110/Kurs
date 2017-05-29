@@ -1,6 +1,6 @@
 =breadcrumb_tag do
   %li.active
-    = link_to t('app.books'), books_path
+    = link_to t('app.book'), books_path
   %li
     = @book.id
 
@@ -47,4 +47,20 @@
               = t('activerecord.attributes.book.stilage')
             %span.badge
               = @book.stilage.id
+          %p.list-group-item
+            %b
+              = t('activerecord.attributes.book.book_creators')
+            %span.badge
+              = @book.book_creators.map{ |cr| cr.creator.last_name }.uniq.join(', ')
+          %p.list-group-item
+            %b
+              = t('activerecord.attributes.book.book_creators')
+            %span.badge
+              = @book.book_creators.map{ |cr| cr.creator.first_name }.uniq.join(', ')
+          %p.list-group-item
+            %b
+              = t('activerecord.attributes.book.book_creators')
+            %span.badge
+              = @book.book_creators.map{ |cr| cr.creator.second_name }.uniq.join(', ')
+          
 

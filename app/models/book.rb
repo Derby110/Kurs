@@ -16,31 +16,31 @@ class Book < ActiveRecord::Base
   def self.search(params)
     result = Book.includes(:creators).references(:creators)
     if params['book_name'].present?
-      result = result.where(categories: {name: params['book_name']})
+      result = result.where(book_name: params['book_name'])
     end
     if params['isbn_index'].present?
-      result = result.where(name: params['isbn_index'])
+      result = result.where(isbn_index: params['isbn_index'])
     end
     if params['part'].present?
-      result = result.where(dosage: params['part'])
+      result = result.where(part: params['part'])
     end
     if params['publick_year'].present?
-      result = result.where(amount: params['publick_year'])
+      result = result.where(publick_year: params['publick_year'])
     end
     if params['number_of_have'].present?
-      result = result.where(manufacture: params['number_of_have'])
+      result = result.where(number_of_have: params['number_of_have'])
     end
     if params['schelf_number'].present?
-      result = result.where(price: params['schelf_number'])
+      result = result.where(schelf_number: params['schelf_number'])
     end
     if params['last_name'].present?
-      result = result.where(recipe: params['last_name'])
+      result = result.where(creators: {last_name: params['last_name']})
     end
     if params['first_name'].present?
-      result = result.where(recipe: params['first_name'])
+      result = result.where(creators: {first_name: params['first_name']})
     end
     if params['second_name'].present?
-      result = result.where(recipe: params['second_name'])
+      result = result.where(creators: {second_name: params['second_name']})
     end
     result.all
   end

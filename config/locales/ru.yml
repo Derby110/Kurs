@@ -48,7 +48,7 @@ ru:
       edit: Редактирование книги
       new: Новая книга
       index: Список книг
-      search: Поиск по книгам
+      search: Поиск книг
       panel: Книги
     creators:
       edit: Редактирование автора
@@ -58,7 +58,7 @@ ru:
       edit: Редактирование связи
       new: Новая связь
       index: Список связей
-    stillages:
+    stilages:
       edit: Редактирование стеллажа
       new: Новый стеллаж
       index: Список стеллажей
@@ -95,12 +95,13 @@ ru:
         name: Обозначение
         info: Краткое название
         full_info: Описание
-      room: &room
-        sсhort_name: Краткое название зала
-        long_name: Полное название зала
+      
       stilage:
         room: Зал
         room_id: Зал
+      room: &room
+        sсhort_name: Краткое название зала
+        long_name: Полное название зала
       stilage/room:
         <<: *room
       book:
@@ -113,20 +114,21 @@ ru:
          schelf_number: Номер полки
          stilage: Стеллаж
          stilage_id: Стеллаж
+         book_creators: Автор
       creator:
          last_name: Фамилия
          first_name: Имя
          second_name: Отчество
-      # nested_start
+
       role_user: &role_users
-      # nested_finish
+
         role: Роль
         role_id: Роль
         data: Параметры
-      # nested_start
+
       user/role_users:
         <<: *role_users
-      # nested_finish
+
       book_creator: &book_creators
         book: Книга
         book_id: Книга
