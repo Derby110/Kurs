@@ -9,7 +9,6 @@
   .panel-body
     = fr.fields_for :creator do |fm|
       = fm.hidden_field :id
-
       .row
         .col-md-6
           .form-group
@@ -25,3 +24,4 @@
           .form-group
             = fm.label :Отчество
             = fm.text_field:second_name, class: 'form-control'
+

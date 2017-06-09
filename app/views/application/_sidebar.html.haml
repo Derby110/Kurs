@@ -32,6 +32,10 @@
       = link_to stilages_path, class: 'subitem' do
         = fa_icon "asterisk"
         = t('app.stilage')
+    %li
+      = link_to search_books_path(), class: 'subitem' do
+        = fa_icon :search
+        = t('app.search')
     %li.footer
       %div
         © В.Ю. Радыгин

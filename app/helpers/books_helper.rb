@@ -1,5 +1,5 @@
 module BooksHelper
   def book_options()
-    Role.all.pluck('id')
+    Book.all.pluck('id')
   end
 end

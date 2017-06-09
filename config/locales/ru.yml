@@ -115,7 +115,8 @@ ru:
          stilage: Стеллаж
          stilage_id: Стеллаж
          book_creators: Автор
-      creator:
+         
+      creator: &creator
          last_name: Фамилия
          first_name: Имя
          second_name: Отчество
@@ -134,6 +135,6 @@ ru:
         book_id: Книга
         creator: Автор
         creator_id: Автор
-      book/book_creator:
+      book/book_creators:
         <<: *book_creators
-          
+

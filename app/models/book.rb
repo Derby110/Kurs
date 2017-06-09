@@ -10,7 +10,7 @@ class Book < ActiveRecord::Base
   validates :number_of_have, presence: true,  numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :schelf_number, presence: true,  numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   
-  accepts_nested_attributes_for :book_creators, allow_destroy: true
+  accepts_nested_attributes_for :book_creators, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :stilage, allow_destroy: true
   
   def self.search(params)

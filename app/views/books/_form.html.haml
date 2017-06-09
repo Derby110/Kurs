@@ -39,6 +39,9 @@
     - i = 0
     =f.fields_for :book_creators do |fr|
       = fr.hidden_field :id
-      = render('books/one_book_creator_form', fr: fr, i: i + 1)
+      -if fr.object.new_record?
+        = render('books/one_book_creator_form', fr: fr, i: i + 1)
+      -else
+        = render('books/show_one_book_creator_form', fr: fr, i: i + 1)
               
 

@@ -2,21 +2,34 @@
   = error_messages_for @stilage
   .form-actions.bottom20
     = f.submit nil, class: 'btn btn-primary'
-  .row
-    .col-md-6
-      .form-group
-        = f.label :room_id
-        = f.select(:room_id, Room.all.map{|x| [x.long_name, x.id]}, {:include_blank => 'Выбрать зал'}, class: 'form-control')
-        = f.error_messages_for(:room_id)
-  .row
-    =f.fields_for :room do |fm|
-      .row
-        .col-md-4
-          .form-group
-            = fm.label :sсhort_name, "Краткое название зала"
-            = fm.text_field :schort_name, class: 'form-control'
-        .col-md-4
-          .form-group
-            = fm.label :long_name, "Полное название зала"
-            = fm.text_field :long_name, class: 'form-control'
-  
+    
+  - if @stilage.new_record?
+    .row
+      .col-md-6
+        .form-group
+          = f.label :room_id
+          = f.select(:room_id, Room.all.map{|x| [x.long_name, x.id]}, {:include_blank => 'Выбрать зал'}, class: 'form-control')
+          = f.error_messages_for(:room_id)
+    .row
+      =f.fields_for :room do |fm|
+        .row
+          .col-md-4
+            .form-group
+              = fm.label :sсhort_name, "Краткое название зала"
+              = fm.text_field :schort_name, class: 'form-control'
+          .col-md-4
+            .form-group
+              = fm.label :long_name, "Полное название зала"
+              = fm.text_field :long_name, class: 'form-control'
+  -else
+    .row
+      =f.fields_for :room do |fm|
+        .row
+          .col-md-4
+            .form-group
+              = fm.label :sсhort_name, "Краткое название зала"
+              = fm.text_field :schort_name, class: 'form-control'
+          .col-md-4
+            .form-group
+              = fm.label :long_name, "Полное название зала"
+              = fm.text_field :long_name, class: 'form-control'

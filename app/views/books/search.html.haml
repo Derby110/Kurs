@@ -34,26 +34,22 @@
         .form-group
           = label_tag 'search', t('activerecord.attributes.book.schelf_number')
           = text_field_tag 'search[schelf_number]', params['search']['schelf_number'], placeholder: "Укажите номер полки", class: 'form-control'
+    
     .row
       .col-md-5
         .form-group
-          = label_tag 'search', t('activerecord.attributes.book.number_of_have')
-          = text_field_tag 'search[number_of_have]', params['search']['number_of_have'], placeholder: "Укажите сколько экземпляров в наличии", class: 'form-control'
+          = label_tag 'search', t('activerecord.attributes.book.book_creators.last_name')
+          = text_field_tag 'search[last_name]', params['search']['last_name'], placeholder: "Укажите фамилию автора", class: 'form-control'
     .row
       .col-md-5
         .form-group
-          = label_tag Creator.human_attribute_name('last_name')
-          = text_field_tag 'search[creator][last_name]', nil, placeholder: "Укажите фамилию автора", class: 'form-control'
+          = label_tag 'search', t('activerecord.attributes.book.book_creators.first_name')
+          = text_field_tag 'search[first_name]', params['search']['first_name'], placeholder: "Укажите имя автора", class: 'form-control'
     .row
       .col-md-5
         .form-group
-          = label_tag Creator.human_attribute_name('first_name')
-          = text_field_tag 'search[creator][first_name]', nil, placeholder: "Укажите имя автора", class: 'form-control'
-    .row
-      .col-md-5
-        .form-group
-          = label_tag Creator.human_attribute_name('second_name')
-          = text_field_tag 'search[creator][second_name]', nil, placeholder: "Укажите отчество автора", class: 'form-control'
+          = label_tag 'search', t('activerecord.attributes.book.book_creators.second_name')
+          = text_field_tag 'search[second_name]', params['search']['second_name'], placeholder: "Укажите отчество автора", class: 'form-control'
     = submit_tag(:search_button, value: 'Поиск', class: 'btn btn-default')
     = link_to  books_path, class: 'btn btn-warning' do
       = fa_icon :backward
